@@ -9,14 +9,5 @@ import java.util.List;
 
 @Service
 public class PhysicalActivityService {
-    @Autowired
-    private PhysicalActivityRepository repository;
 
-    public List<PhysicalActivity> getAllActivitiesByUserId(Long userId) {
-        return repository.findByUserId(userId);
-    }
-
-    public void saveActivity(PhysicalActivity activity) {
-        repository.save(activity);
-    }
 }
