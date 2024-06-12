@@ -9,5 +9,4 @@ public class DiabetesControlAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DiabetesControlAppApplication.class, args);
 	}
-
 }
