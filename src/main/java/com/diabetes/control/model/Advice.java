@@ -19,5 +19,6 @@ public class Advice {
     private String message;
     private double minValue;
     private double maxValue;
+    //just to push
 
 }
