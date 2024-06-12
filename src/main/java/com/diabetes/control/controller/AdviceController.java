@@ -1,4 +1,4 @@
 package com.diabetes.control.controller;
 
-public class ConsielController {
+public class AdviceController {
 }

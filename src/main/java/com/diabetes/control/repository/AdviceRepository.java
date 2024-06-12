@@ -1,4 +1,4 @@
 package com.diabetes.control.repository;
 
-public interface ConsielRepository {
+public interface AdviceRepository {
 }
