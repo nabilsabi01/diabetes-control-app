@@ -3,10 +3,19 @@ package com.diabetes.control.service;
 import com.diabetes.control.model.PhysicalActivity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PhysicalActivityService {
-    PhysicalActivity save(PhysicalActivity physicalActivity);
-    List<PhysicalActivity> findAllByUserId(Long userId);
-    PhysicalActivity findById(Long id);
-    void deleteById(Long id);
+
+    List<PhysicalActivity> getAllActivitiesForUser(Long userId);
+
+    void createActivity(PhysicalActivity activity, Long userId);
+
+    Optional<PhysicalActivity> getActivityById(Long id);
+
+    void updateActivity(Long id, PhysicalActivity updatedActivity);
+
+    void deleteActivity(Long id);
+
+    Long getUserIdForActivity(Long activityId);
 }
