@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Physical Activities</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #343a40;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <h1>Physical Activities</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Date/Time</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="activity : ${activities}">
+            <td th:text="${activity.name}"></td>
+            <td th:text="${activity.duration}"></td>
+            <td th:text="${activity.dateTime}"></td>
+            <td><a th:href="@{/activities/edit/{id}(id=${activity.id})}">Edit</a></td>
+            <td><a th:href="@{/activities/delete/{id}(id=${activity.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/activities/new/{userId}(userId=${userId})}" class="btn btn-primary">Add New Activity</a>
+</div>
 </body>
 </html>

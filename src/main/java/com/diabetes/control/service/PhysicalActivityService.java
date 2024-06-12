@@ -1,22 +1,21 @@
 package com.diabetes.control.service;
 
 import com.diabetes.control.model.PhysicalActivity;
-import com.diabetes.control.repository.PhysicalActivityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class PhysicalActivityService {
-    @Autowired
-    private PhysicalActivityRepository repository;
+public interface PhysicalActivityService {
 
-    public List<PhysicalActivity> getAllActivitiesByUserId(Long userId) {
-        return repository.findByUserId(userId);
-    }
+    List<PhysicalActivity> getAllActivitiesForUser(Long userId);
 
-    public void saveActivity(PhysicalActivity activity) {
-        repository.save(activity);
-    }
+    void createActivity(PhysicalActivity activity, Long userId);
+
+    Optional<PhysicalActivity> getActivityById(Long id);
+
+    void updateActivity(Long id, PhysicalActivity updatedActivity);
+
+    void deleteActivity(Long id);
+
+    Long getUserIdForActivity(Long activityId);
 }
