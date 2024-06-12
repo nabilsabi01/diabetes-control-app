@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Glycémie</title>
+</head>
+<body>
+<h1>Lectures de Glycémie</h1>
+<a href="/readings/new">Nouvelle Lecture</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Niveau</th>
+        <th>Timestamp</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reading : ${readings}">
+        <td th:text="${reading.id}">1</td>
+        <td th:text="${reading.level}">100</td>
+        <td th:text="${reading.timestamp}">2023-01-01 12:00</td>
+        <td>
+            <a th:href="@{/readings/edit/{id}(id=${reading.id})}">Éditer</a>
+            <a th:href="@{/readings/delete/{id}(id=${reading.id})}">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
