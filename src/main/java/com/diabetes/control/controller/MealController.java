@@ -14,8 +14,6 @@ public class MealController {
     @Autowired
     private MealService mealService;
 
-
-
     @GetMapping("/new/{userId}")
     public String showCreateMealForm(@PathVariable Long userId, Model model) {
         model.addAttribute("meal", new Meal());
@@ -26,61 +24,30 @@ public class MealController {
     @PostMapping("/new/{userId}")
     public String createMeal(@ModelAttribute("meal") Meal meal, @PathVariable Long userId) {
         mealService.createMeal(meal, userId);
-        return "redirect:/meal-list/" + userId;
+        return "redirect:/meals/list/" + userId;
     }
 
+    @GetMapping("/list/{userId}")
+    public String getAllMealsForUser(@PathVariable Long userId, Model model) {
+        model.addAttribute("meals", mealService.getAllMealsForUser(userId));
+        model.addAttribute("userId", userId);
+        return "meal-list";
+    }
 
+    // Uncomment and update these methods if editing meals functionality is needed
+    /*
+    @GetMapping("/edit/{id}")
+    public String showEditMealForm(@PathVariable Long id, Model model) {
+        Meal meal = mealService.getMealById(id)
+                .orElseThrow(() -> new RuntimeException("Meal not found"));
+        model.addAttribute("meal", meal);
+        return "edit-meal";
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @GetMapping("/{userId}")
-//    public String getAllMealsForUser(@PathVariable Long userId, Model model) {
-//        model.addAttribute("meals", mealService.getAllMealsForUser(userId));
-//        model.addAttribute("userId", userId);
-//        return "meal-list";
-//    }
-//
-//    @GetMapping("/edit/{id}")
-//    public String showEditMealForm(@PathVariable Long id, Model model) {
-//        Meal meal = mealService.getMealById(id)
-//                .orElseThrow(() -> new RuntimeException("Meal not found"));
-//        model.addAttribute("meal", meal);
-//        return "edit-meal";
-//    }
-//
-//    @PostMapping("/edit/{id}")
-//    public String updateMeal(@PathVariable Long id, @ModelAttribute("meal") Meal meal) {
-//        mealService.updateMeal(id, meal);
-//        return "redirect:/meal-list/" + meal.getUser().getId();
-//    }
-
-
+    @PostMapping("/edit/{id}")
+    public String updateMeal(@PathVariable Long id, @ModelAttribute("meal") Meal meal) {
+        mealService.updateMeal(id, meal);
+        return "redirect:/meals/" + meal.getUser().getId();
+    }
+    */
 }

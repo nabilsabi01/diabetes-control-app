@@ -11,8 +11,10 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>Meal Image</th>
             <th>Meal ID</th>
             <th>Meal Name</th>
+            <th>Meal Type</th>
             <th>Meal Description</th>
             <th>Carbs</th>
             <th>Kcal</th>
@@ -20,15 +22,17 @@
         </thead>
         <tbody>
         <tr th:each="meal : ${meals}">
+            <td th:text="${meal.mealImage}"></td>
             <td th:text="${meal.mealId}"></td>
             <td th:text="${meal.mealName}"></td>
+            <td th:text="${meal.mealType}"></td>
             <td th:text="${meal.mealDescription}"></td>
             <td th:text="${meal.carbs}"></td>
             <td th:text="${meal.kcal}"></td>
         </tr>
         </tbody>
     </table>
-    <a href="/meal-form" class="btn btn-primary">Add New Meal</a>
+    <a th:href="@{'/meals/new/' + ${userId}}" class="btn btn-primary">Add New Meal</a>
 </div>
 </body>
 </html>
