@@ -1,10 +1,10 @@
 package com.diabetes.control.model;
 
 public enum GlucoseLevel {
-    HYPOGLYCEMIA("Hypoglycémie"),
+    HYPOGLYCEMIA("Low"),
     NORMAL("Normal"),
-    PREDIABETES("Pré-diabète"),
-    DIABETES("Diabète");
+    PREDIABETES("Meduim"),
+    DIABETES("High");
 
     private final String displayName;
 
