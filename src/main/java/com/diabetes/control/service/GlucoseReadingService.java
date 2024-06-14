@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class GlucoseReadingService {
-
     @Autowired
     private GlucoseReadingRepository repository;
 
@@ -17,12 +16,12 @@ public class GlucoseReadingService {
         return repository.findAll();
     }
 
-    public GlucoseReading getReadingById(Long id) {
-        return repository.findById(id).orElse(null);
+    public void saveReading(GlucoseReading reading) {
+        repository.save(reading);
     }
 
-    public GlucoseReading saveReading(GlucoseReading reading) {
-        return repository.save(reading);
+    public GlucoseReading getReadingById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     public void deleteReading(Long id) {

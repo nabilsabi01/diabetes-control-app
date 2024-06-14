@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Glucose Level Advice</title>
-
+    <title>Conseil de Glycémie</title>
 </head>
 <body>
-<div>
-    <h2>Glucose Level: <span th:text="${glucoseLevel}"></span></h2>
-    <p th:text="${adviceMessage}"></p>
-</div>
+<h1>Conseil pour le Niveau de Glycémie</h1>
+<p>Niveau de Glycémie: <span th:text="${glucoseLevel}"></span></p>
+<p>Conseil: <span th:text="${adviceMessage}"></span></p>
+<a href="/readings">Retour à la liste des lectures</a>
 </body>
 </html>
