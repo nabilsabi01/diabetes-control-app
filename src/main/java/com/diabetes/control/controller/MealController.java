@@ -3,6 +3,7 @@ package com.diabetes.control.controller;
 import com.diabetes.control.model.Meal;
 import com.diabetes.control.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
+MealManagement
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ public class MealController {
 
     @Autowired
     private MealService mealService;
+
 
     @GetMapping("/new/{userId}")
     public String showCreateMealForm(@PathVariable Long userId, Model model) {
@@ -46,5 +48,6 @@ public class MealController {
     public String updateMeal(@PathVariable Long id, @ModelAttribute("meal") Meal meal) {
         mealService.updateMeal(id, meal);
         return "redirect:/meals/list/" + meal.getUser().getId();
+
     }
 }
