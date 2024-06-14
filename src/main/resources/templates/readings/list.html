@@ -14,6 +14,7 @@
         <th>Timestamp</th>
         <th>Catégorie</th>
         <th>Actions</th>
+        <th>Advice</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,9 @@
         <td>
             <a th:href="@{/readings/edit/{id}(id=${reading.id})}">Éditer</a>
             <a th:href="@{/readings/delete/{id}(id=${reading.id})}">Supprimer</a>
+        </td>
+        <td>
+            <a th:href="@{/advice/{glucoseLevel}(glucoseLevel=${reading.level})}">Voir le conseil</a>
         </td>
     </tr>
     </tbody>
