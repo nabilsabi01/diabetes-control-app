@@ -14,6 +14,7 @@ public class Advice {
     private GlucoseLevel glucoseLevel;
 
     @Column(name = "message")
+    private String message;
 
     // Default constructor
     public Advice() {

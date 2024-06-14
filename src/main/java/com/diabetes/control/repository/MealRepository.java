@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface MealRepository extends JpaRepository<Meal, Long> {
     List<Meal> findByUserId(Long userId);
+}
 

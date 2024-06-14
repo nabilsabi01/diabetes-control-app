@@ -3,7 +3,6 @@ package com.diabetes.control.controller;
 import com.diabetes.control.model.Meal;
 import com.diabetes.control.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
-MealManagement
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
