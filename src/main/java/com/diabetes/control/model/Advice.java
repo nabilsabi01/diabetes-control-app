@@ -11,11 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+
 public class Advice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adviceId;
-
     private String message;
     private double minValue;
     private double maxValue;

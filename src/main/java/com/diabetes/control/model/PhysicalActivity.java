@@ -16,9 +16,15 @@ public class PhysicalActivity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "activity_type")
+    private ActivityType activityType;
     private Double duration;
-    private LocalDateTime dateTime;
+    @Column(name = "start_date_time")
+    private LocalDateTime startDateTime;
+    @Column(name = "end_date_time")
+    private LocalDateTime endDateTime;
+    private String notes;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
