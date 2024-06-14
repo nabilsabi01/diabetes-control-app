@@ -17,4 +17,13 @@ public class GlucoseReading {
     private Long id;
     private Double level;
     private LocalDateTime timestamp;
+
+    @Enumerated(EnumType.STRING)
+    private GlucoseLevel glucoseLevel;
+
+    @PrePersist
+    @PreUpdate
+    private void updateGlucoseLevel() {
+        this.glucoseLevel = GlucoseLevel.fromLevel(this.level);
+    }
 }
