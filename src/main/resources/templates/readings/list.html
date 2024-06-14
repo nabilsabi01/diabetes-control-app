@@ -2,32 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Glycémie</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>Lectures de Glycémie</h1>
-<a href="/readings/new">Nouvelle Lecture</a>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Niveau</th>
-        <th>Timestamp</th>
-        <th>Catégorie</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="reading : ${readings}">
-        <td th:text="${reading.id}">1</td>
-        <td th:text="${reading.level}">100</td>
-        <td th:text="${reading.timestamp}">2023-01-01 12:00</td>
-        <td th:text="${reading.glucoseLevel.displayName}">Normal</td>
-        <td>
-            <a th:href="@{/readings/edit/{id}(id=${reading.id})}">Éditer</a>
-            <a th:href="@{/readings/delete/{id}(id=${reading.id})}">Supprimer</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <h1 class="mt-5">Lectures de Glycémie</h1>
+    <a href="/readings/new" class="btn btn-primary mb-3">Nouvelle Lecture</a>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            BKJDBFKJASBFJBSLJFBsjfl
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reading : ${readings}">
+            <td th:text="${reading.level}">100</td>
+            <td th:text="${reading.timestamp}">2023-01-01 12:00</td>
+            <td th:text="${reading.glucoseLevel.displayName}">Normal</td>
+            <td>
+                <a th:href="@{/readings/edit/{id}(id=${reading.id})}" class="btn btn-warning btn-sm">Éditer</a>
+                <a th:href="@{/readings/delete/{id}(id=${reading.id})}" class="btn btn-danger btn-sm">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
