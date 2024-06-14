@@ -12,22 +12,22 @@ public class Meal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mealId")
+
     private Long mealId;
 
-    @Column(name = "mealName")
     private String mealName;
 
     private String mealType;
 
-    @Column(name = "mealDescription")
+    @Column(name = "meal_description")
     private String mealDescription;
 
+    @Column(name = "meal_image")
     private String mealImage;
 
     @Column(name = "Carbs")
     private Integer carbs;
 
-    @Column(name = "Kcal")
+    @Column(name = "kcal")
     private Integer kcal;
 }
