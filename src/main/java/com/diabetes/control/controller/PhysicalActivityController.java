@@ -45,7 +45,8 @@ public class PhysicalActivityController {
     @PostMapping("/edit/{id}")
     public String updateActivity(@PathVariable Long id, @ModelAttribute("activity") PhysicalActivity activity) {
         activityService.updateActivity(id, activity);
-        return "redirect:/activities/" + activity.getUser().getId();
+        Long userId = activityService.getUserIdForActivity(id);
+        return "redirect:/activities/" + userId;
     }
 
     @GetMapping("/delete/{id}")
