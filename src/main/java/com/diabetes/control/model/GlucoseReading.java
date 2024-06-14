@@ -17,10 +17,9 @@ public class GlucoseReading {
     private Long id;
     private Double level;
     private LocalDateTime timestamp;
-
     @Enumerated(EnumType.STRING)
+    @Column(name = "glucose_level")
     private GlucoseLevel glucoseLevel;
-
     @PrePersist
     @PreUpdate
     private void updateGlucoseLevel() {

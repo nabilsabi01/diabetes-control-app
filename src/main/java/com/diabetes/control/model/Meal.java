@@ -9,18 +9,22 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Meal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mealId;
     private String mealName;
-    private String mealType;
-    private String mealDescription;
-    private String mealImage;
-    private Integer carbs;
-    private Integer kcal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String mealType;
+
+    @Column(name = "meal_description")
+    private String mealDescription;
+
+    @Column(name = "meal_image")
+    private String mealImage;
+
+    @Column(name = "Carbs")
+    private Integer carbs;
+
+    @Column(name = "kcal")
+    private Integer kcal;
 }
