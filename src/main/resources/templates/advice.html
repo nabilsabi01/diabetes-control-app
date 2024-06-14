@@ -1,18 +1,14 @@
-package templates;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Glucose Level Advice</title>
 
-@WebServlet(name = "", value = "/")
-public class  extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-}
+</head>
+<body>
+<div>
+    <h2>Glucose Level: <span th:text="${glucoseLevel}"></span></h2>
+    <p th:text="${adviceMessage}"></p>
+</div>
+</body>
+</html>
