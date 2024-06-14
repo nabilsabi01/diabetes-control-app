@@ -16,17 +16,17 @@ public class Advice {
     @Column(name = "message")
     private String message;
 
-    // Default constructor
+
     public Advice() {
     }
 
-    // Constructor with parameters
+
     public Advice(GlucoseLevel glucoseLevel, String message) {
         this.glucoseLevel = glucoseLevel;
         this.message = message;
     }
 
-    // Getters and setters
+
 
     public Long getId() {
         return id;
