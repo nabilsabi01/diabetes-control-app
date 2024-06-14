@@ -19,5 +19,4 @@ public class Advice {
     @Enumerated(EnumType.STRING)
     @Column(name = "glucose_level")
     private GlucoseLevel glucoseLevel;
-    private String message;
 }
