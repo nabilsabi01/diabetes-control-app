@@ -16,15 +16,13 @@ public class Meal {
 
     private String mealType;
 
-    @Column(name = "meal_description")
     private String mealDescription;
 
-    @Column(name = "meal_image")
     private String mealImage;
 
-    @Column(name = "Carbs")
     private Integer carbs;
 
-    @Column(name = "kcal")
     private Integer kcal;
+
+
 }
