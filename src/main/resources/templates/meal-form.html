@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Meal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('https://images.pexels.com/photos/1171170/pexels-photo-1171170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+            background-size: cover;
+            background-color: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(5px);            height: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .form-container {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 8px;
+            color: white;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ced4da;
+            color: #495057;
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay"></div>
+<div class="container">
+    <div class="form-container">
+        <h2>Add Meal</h2>
+        <form th:action="@{/meals/new/{userId}(userId=${userId})}" th:object="${meal}" method="post">
+            <div class="form-group">
+                <label for="mealName">Meal Name:</label>
+                <input type="text" class="form-control" id="mealName" th:field="*{mealName}" placeholder="Enter meal name" required>
+            </div>
+            <div class="form-group">
+                <label for="mealDescription">Meal Description:</label>
+                <textarea class="form-control" id="mealDescription" th:field="*{mealDescription}" placeholder="Enter meal description" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="mealType">Meal Type:</label>
+                <input type="text" class="form-control" id="mealType" th:field="*{mealType}" placeholder="Enter meal type" required>
+            </div>
+            <div class="form-group">
+                <label for="mealImage">Meal Image URL:</label>
+                <input type="text" class="form-control" id="mealImage" th:field="*{mealImage}" placeholder="Enter image URL" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Carbs">Carbs:</label>
+                    <input type="number" class="form-control" id="Carbs" th:field="*{Carbs}" placeholder="Enter carbs" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Kcal">Kcal:</label>
+                    <input type="number" class="form-control" id="Kcal" th:field="*{Kcal}" placeholder="Enter kcal" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
