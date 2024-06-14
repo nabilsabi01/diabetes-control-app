@@ -3,57 +3,50 @@ package com.diabetes.control.controller;
 import com.diabetes.control.model.Meal;
 import com.diabetes.control.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
-@RestController
+@Controller
 @RequestMapping("/meals")
 public class MealController {
 
     @Autowired
     private MealService mealService;
 
-    @GetMapping
-    public List<Meal> getAllMeals() {
-        return mealService.getAllMeals();
+
+    @GetMapping("/new/{userId}")
+    public String showCreateMealForm(@PathVariable Long userId, Model model) {
+        model.addAttribute("meal", new Meal());
+        model.addAttribute("userId", userId);
+        return "meal-form";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Meal> getMealById(@PathVariable Long id) {
-        Optional<Meal> meal = mealService.getMealById(id);
-        if (meal.isPresent()) {
-            return ResponseEntity.ok(meal.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @PostMapping("/new/{userId}")
+    public String createMeal(@ModelAttribute("meal") Meal meal, @PathVariable Long userId) {
+        mealService.createMeal(meal, userId);
+        return "redirect:/meals/list/" + userId;
     }
 
-    @PostMapping
-    public Meal createMeal(@RequestBody Meal meal) {
-        return mealService.saveMeal(meal);
+    @GetMapping("/list/{userId}")
+    public String getAllMealsForUser(@PathVariable Long userId, Model model) {
+        model.addAttribute("meals", mealService.getAllMealsForUser(userId));
+        model.addAttribute("userId", userId);
+        return "meal-list";
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Meal> updateMeal(@PathVariable Long id, @RequestBody Meal mealDetails) {
-        Optional<Meal> meal = mealService.getMealById(id);
-        if (meal.isPresent()) {
-            Meal updatedMeal = meal.get();
-            updatedMeal.setMealName(mealDetails.getMealName());
-            updatedMeal.setMealDescription(mealDetails.getMealDescription());
-            updatedMeal.setCarbs(mealDetails.getCarbs());
-            updatedMeal.setKcal(mealDetails.getKcal());
-            return ResponseEntity.ok(mealService.saveMeal(updatedMeal));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/edit/{id}")
+    public String showEditMealForm(@PathVariable Long id, Model model) {
+        Meal meal = mealService.getMealById(id)
+                .orElseThrow(() -> new RuntimeException("Meal not found"));
+        model.addAttribute("meal", meal);
+        return "edit-meal";
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMeal(@PathVariable Long id) {
-        mealService.deleteMeal(id);
-        return ResponseEntity.noContent().build();
+    @PostMapping("/edit/{id}")
+    public String updateMeal(@PathVariable Long id, @ModelAttribute("meal") Meal meal) {
+        mealService.updateMeal(id, meal);
+        return "redirect:/meals/list/" + meal.getUser().getId();
+
     }
 }

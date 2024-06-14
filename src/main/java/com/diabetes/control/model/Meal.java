@@ -9,12 +9,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Meal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long mealId;
-
     private String mealName;
 
     private String mealType;
