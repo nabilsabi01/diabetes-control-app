@@ -14,7 +14,6 @@ public class MealController {
     @Autowired
     private MealService mealService;
 
-
     @GetMapping("/new/{userId}")
     public String showCreateMealForm(@PathVariable Long userId, Model model) {
         model.addAttribute("meal", new Meal());
@@ -47,6 +46,5 @@ public class MealController {
     public String updateMeal(@PathVariable Long id, @ModelAttribute("meal") Meal meal) {
         mealService.updateMeal(id, meal);
         return "redirect:/meals/list/" + meal.getUser().getId();
-
     }
 }

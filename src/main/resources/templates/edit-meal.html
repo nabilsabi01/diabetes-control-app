@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Meal</title>
+    <title>Edit Meal</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
             background: url('https://images.pexels.com/photos/1171170/pexels-photo-1171170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
             background-size: cover;
-            background-color: rgba(255, 255, 255, .15);
-            backdrop-filter: blur(5px);            height: 100%;
+            height: 100%;
             overflow-y: auto;
             position: relative;
         }
@@ -20,6 +19,8 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            background-color: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(5px);
         }
         .form-container {
             position: relative;
@@ -58,11 +59,11 @@
 <div class="overlay"></div>
 <div class="container">
     <div class="form-container">
-        <h2>Add Meal</h2>
-        <form th:action="@{/meals/edit/{userId}(userId=${userId})}" th:object="${meal}" method="post">
+        <h2>Edit Meal</h2>
+        <form th:action="@{/meals/edit/{id}(id=${meal.id})}" th:object="${meal}" method="post">
             <div class="form-group">
                 <label for="mealName">Meal Name:</label>
-                <input type="text" class="form-control" id="mealName" th:field="*{mealName}" placeholder="meal" required>
+                <input type="text" class="form-control" id="mealName" th:field="*{mealName}" placeholder="Meal name" required>
             </div>
             <div class="form-group">
                 <label for="mealDescription">Meal Description:</label>
