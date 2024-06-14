@@ -34,8 +34,6 @@ public class MealController {
         return "meal-list";
     }
 
-    // Uncomment and update these methods if editing meals functionality is needed
-    /*
     @GetMapping("/edit/{id}")
     public String showEditMealForm(@PathVariable Long id, Model model) {
         Meal meal = mealService.getMealById(id)
@@ -47,7 +45,6 @@ public class MealController {
     @PostMapping("/edit/{id}")
     public String updateMeal(@PathVariable Long id, @ModelAttribute("meal") Meal meal) {
         mealService.updateMeal(id, meal);
-        return "redirect:/meals/" + meal.getUser().getId();
+        return "redirect:/meals/list/" + meal.getUser().getId();
     }
-    */
 }

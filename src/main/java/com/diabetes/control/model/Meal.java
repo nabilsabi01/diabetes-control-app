@@ -12,8 +12,8 @@ public class Meal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mealId;
 
+    private Long mealId;
     private String mealName;
     private String mealType;
     private String mealDescription;
