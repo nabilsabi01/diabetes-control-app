@@ -38,11 +38,7 @@ public class PhysicalActivityServiceImpl implements PhysicalActivityService {
     public void updateActivity(Long id, PhysicalActivity updatedActivity) {
         Optional<PhysicalActivity> existingActivity = activityRepository.findById(id);
         if (existingActivity.isPresent()) {
-            PhysicalActivity activity = existingActivity.get();
-            activity.setName(updatedActivity.getName());
-            activity.setDuration(updatedActivity.getDuration());
-            activity.setDateTime(updatedActivity.getDateTime());
-            activityRepository.save(activity);
+            activityRepository.save(updatedActivity);
         }
     }
 
