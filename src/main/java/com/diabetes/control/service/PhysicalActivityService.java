@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PhysicalActivityService {
-
     List<PhysicalActivity> getAllActivitiesForUser(Long userId);
 
     void createActivity(PhysicalActivity activity, Long userId);
